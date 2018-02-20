@@ -8,7 +8,7 @@
     <div class="card-body">
         <div class="alert-danger">
             @if(count($errors)>0)
-                {{--{{ dump($errors) }}--}}
+                {{--{{ dump($errors) }}--}}Ошибка
                 @foreach($errors->all() as $error)
                     {{$error}}
                 @endforeach
