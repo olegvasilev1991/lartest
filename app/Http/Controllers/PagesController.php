@@ -42,15 +42,21 @@ class PagesController extends Controller
      */
     public function store(Request $request)
     {
-        $rules=[
+        $rules = [
             'title'=>'required|max:10',
 
         ];
+        $message = [
+            'title.required'=>'не заполнил :attribute ',
 
-        $validator = $this->validate($request,$rules);
+        ];
+        $atr = [
+            'title' => 'Название'
+        ];
+        $validator = $this->validate($request,$rules,$message,$atr);
 
 
-
+        //Validator::make();
 
         $page = new App\Page;
         $data = $request->all();
@@ -62,7 +68,7 @@ class PagesController extends Controller
 
         $posts = App\Post::all();
         return view('posts.index',compact('posts'));
-        dump($request->title);
+        //dump($request->title);
     }
 
     /**

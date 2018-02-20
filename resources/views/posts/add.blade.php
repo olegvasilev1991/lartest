@@ -6,12 +6,15 @@
 @endif
 @section('add')
     <div class="card-body">
-        @if(count($errors)>0)
-            {{ dump($errors) }}
-           {{-- @foreach($errors->all() as $error)
-                    {{$error}}55
-                @endforeach--}}
-        @endif
+        <div class="alert-danger">
+            @if(count($errors)>0)
+                {{--{{ dump($errors) }}--}}
+                @foreach($errors->all() as $error)
+                    {{$error}}
+                @endforeach
+            @endif
+        </div>
+
         <form action="/" method="POST">
             @csrf
             <div class="form-group row">
