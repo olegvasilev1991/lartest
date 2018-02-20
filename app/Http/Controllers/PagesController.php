@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App;
 class PagesController extends Controller
@@ -43,15 +42,27 @@ class PagesController extends Controller
      */
     public function store(Request $request)
     {
+        $rules=[
+            'title'=>'required|max:10',
+
+        ];
+
+        $validator = $this->validate($request,$rules);
+
+
+
+
         $page = new App\Page;
         $data = $request->all();
         $page->create(array_only($data, $page->getFillable()));
         /*$page->title = $request->title;
         $page->body = $request->body;
         $page->save();*/
+
+
         $posts = App\Post::all();
         return view('posts.index',compact('posts'));
-        //dump($request->title);
+        dump($request->title);
     }
 
     /**
