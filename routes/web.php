@@ -37,3 +37,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'profile', 'as' => 'profile.
     Route::post('/','AccountController@Edit')->name('accountedit');
     Route::get('/pages/{post}', 'PagesController@show')->name('page');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
